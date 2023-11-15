@@ -1,4 +1,4 @@
-import logging
+
 
 import altair as alt
 import pandas as pd
@@ -6,20 +6,16 @@ import streamlit as st
 from vega_datasets import data
 from azure.monitor.opentelemetry import configure_azure_monitor
 
-
 configure_azure_monitor()
 
-logger = logging.getLogger()
 
 st.set_page_config(
     page_title="Time series annotations", page_icon="⬇", layout="centered"
-    logger.info('set_page_config')
 )
 
 
 @st.experimental_memo
 def get_data():
-    logger.info('get_data()')
     source = data.stocks()
     source = source[source.date.gt("2004-01-01")]
     return source
@@ -27,7 +23,6 @@ def get_data():
 
 @st.experimental_memo(ttl=60 * 60 * 24)
 def get_chart(data):
-    logger.info('get_chart(data)')
     hover = alt.selection_single(
         fields=["date"],
         nearest=True,
