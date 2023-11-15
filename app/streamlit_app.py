@@ -9,11 +9,11 @@ from azure.monitor.opentelemetry import configure_azure_monitor
 
 configure_azure_monitor()
 
-logger = loging.getLogger()
+logger = logging.getLogger()
 
 st.set_page_config(
     page_title="Time series annotations", page_icon="⬇", layout="centered"
-    logger.info('Set Page Config')
+    logger.info('set_page_config')
 )
 
 
